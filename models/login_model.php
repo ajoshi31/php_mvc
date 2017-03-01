@@ -19,12 +19,13 @@ class Login_Model extends Model{
 
         //$data = $statement->fetchAll();
         $count =  $statement->rowCount();
-        //print_r($data);
 
         if($count > 0){
-            //login
+            Session::init();
+            Session::set('loggedIn',true);
+            header('location:../dashboard');
         } else{
-            //error
+            header('location:../login');
         }
 
     }
