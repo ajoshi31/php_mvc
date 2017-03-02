@@ -17,7 +17,6 @@ class Login_Model extends Model{
             ':password' => $_POST['password']
         ));
 
-        //$data = $statement->fetchAll();
         $count =  $statement->rowCount();
 
         if($count > 0){
