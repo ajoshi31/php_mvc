@@ -7,6 +7,7 @@ class Dashboard_Model extends  Model{
     }
 
     function xhrInsert(){
+
         $text =  $_POST['text'];
         $statementHandler = $this->db->prepare('INSERT INTO data (text) VALUES (:text)');
         $statementHandler->execute(array(':text' => $text));

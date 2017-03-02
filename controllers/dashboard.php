@@ -21,6 +21,7 @@ class Dashboard extends Controller
             exit;
         }
 
+        //print_r($_SESSION);
         $this->view->js = array('dashboard/js/default.js');
 
     }
