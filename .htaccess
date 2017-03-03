@@ -6,7 +6,7 @@
    Options +FollowSymLinks
 
    RewriteEngine on
-
+   RewriteBase /Basic_MVC_PHP/
 
    # Send request via index.php
 
