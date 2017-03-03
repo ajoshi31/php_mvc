@@ -9,12 +9,12 @@ class Login_Model extends Model{
 
     public function run (){
 
-        $statement = $this->db->prepare("SELECT id,role FROM users WHERE 
+        $statement = $this->db->prepare("SELECT id,role FROM user WHERE 
         login = :login AND password = :password");
 
         $statement->execute(array(
             ':login' => $_POST['login'],
-            ':password' => Hash::create('md5',$_POST['password'],HASH_PASSWORD_KEY)
+            ':password' => Hash::create('sha256',$_POST['password'],HASH_PASSWORD_KEY)
         ));
 
         $data = $statement->fetch();
