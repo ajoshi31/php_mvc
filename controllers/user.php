@@ -36,7 +36,7 @@ class User extends Controller
         $data = array();
 
         $data['login'] = $_POST['login'];
-        $data['password'] = md5($_POST['password']);
+        $data['password'] = $_POST['password'];
         $data['role'] = $_POST['role'];
 
         //todo do youre error checking
@@ -57,7 +57,7 @@ class User extends Controller
         $data = array();
         $data['id'] = $id;
         $data['login'] = $_POST['login'];
-        $data['password'] = md5($_POST['password']);
+        $data['password'] = $_POST['password'];
         $data['role'] = $_POST['role'];
 
         //todo do youre error checking

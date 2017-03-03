@@ -1,26 +1,12 @@
 <?php
-/**
- * Created by IntelliJ IDEA.
- * User: ajoshi.biz
- * Date: 01/03/17
- * Time: 10:04
- */
 
-    //Use an autoloader!
-    require 'libs/Bootstrap.php';
-    require 'libs/Controller.php';
-    require 'libs/Model.php';
-    require 'libs/View.php';
+require 'config/paths.php';
+require 'config/database.php';
+require 'config/constants.php';
 
-    //library
-    require 'libs/Database.php';
-    require 'libs/Session.php';
+// Also spl_autoload_register (Take a look at it if you like)
+function __autoload($class) {
+    require LIBS . $class .".php";
+}
 
-
-    //config essentials
-    require 'config/paths.php';
-    require 'config/database.php';
-
-    $app = new Bootstrap();
-?>
-
+$app = new Bootstrap();

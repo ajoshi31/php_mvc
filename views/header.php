@@ -37,7 +37,7 @@
 <body>
 <nav style="padding-left: 1%; padding-right: 1%">
     <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
+        <a href="#" class="brand-logo">MVC BY ATUL</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
 
             <?php if (Session::get('loggedIn') == false): ?>
