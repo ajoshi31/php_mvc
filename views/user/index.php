@@ -36,7 +36,7 @@
 <table>
     <thead>
     <tr>
-        <th data-field="id">Item Id</th>
+        <th data-field="userid">Item Id</th>
         <th data-field="name">Item Name</th>
         <th data-field="price">Item Price</th>
     </tr>
@@ -46,11 +46,11 @@
     foreach ($this->userList as $key => $value) {
         ?>
         <tr>
-            <td><?php echo $value["id"] ?></td>
+            <td><?php echo $value["userid"] ?></td>
             <td><?php echo $value["login"] ?></td>
             <td><?php echo $value["role"] ?></td>
-            <td> <a href="<?php echo URL; ?>user/edit/<?php echo $value['id']; ?>"><i class="material-icons">mode_edit</i></a>
-                <a href="<?php echo URL; ?>user/delete/<?php echo $value['id']; ?>"><i class="material-icons">delete</i></a>
+            <td> <a href="<?php echo URL; ?>user/edit/<?php echo $value['userid']; ?>"><i class="material-icons">mode_edit</i></a>
+                <a href="<?php echo URL; ?>user/delete/<?php echo $value['userid']; ?>"><i class="material-icons">delete</i></a>
             </td>
         </tr>
         <?php

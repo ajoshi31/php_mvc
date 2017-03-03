@@ -2,7 +2,7 @@
 
 
 <div class="row">
-    <form class="col s12" method="post" action="<?php echo URL;?>user/editSave/<?php echo $this->user[0]['id']?>">
+    <form class="col s12" method="post" action="<?php echo URL;?>user/editSave/<?php echo $this->user[0]['userid']?>">
         <div class="row">
             <div class="input-field col s4">
                 <input id="login" name="login" type="text" value="<?php echo $this->user[0]['login']?>">

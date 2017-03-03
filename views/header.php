@@ -45,6 +45,7 @@
 
             <?php if (Session::get('loggedIn') == true): ?>
                 <li><a href="<?php echo URL; ?>dashboard">Dashboard</a></li>
+                <li><a href="<?php echo URL; ?>note">Note</a></li>
                 <?php if (Session::get('role') == "owner"): ?>
                     <li><a href="<?php echo URL; ?>user">Users</a></li>
                 <?php endif; ?>

@@ -61,6 +61,7 @@ class Database extends PDO
         $fieldDetails = rtrim($fieldDetails, ',');
 
         $statementHandler = $this->prepare("UPDATE $table SET $fieldDetails WHERE $where");
+
         foreach ($data as $key => $value) {
             $statementHandler->bindValue("$key", $value);
         }
@@ -78,6 +79,7 @@ class Database extends PDO
      */
     public function delete($table, $where, $limit = 1)
     {
+        $a = $this->prepare("DELETE FROM $table WHERE $where LIMIT $limit");
         return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
     }
 

@@ -9,7 +9,7 @@ class Login_Model extends Model{
 
     public function run (){
 
-        $statement = $this->db->prepare("SELECT id,role FROM user WHERE 
+        $statement = $this->db->prepare("SELECT userid,role FROM user WHERE 
         login = :login AND password = :password");
 
         $statement->execute(array(
@@ -23,8 +23,11 @@ class Login_Model extends Model{
 
         if($count > 0){
             Session::init();
-            Session::set('loggedIn',true);
-            Session::set('role',$data['role']);
+            Session::set('role', $data['role']);
+            Session::set('loggedIn', true);
+            Session::set('userid', $data['userid']);
+
+
             header('location:../dashboard');
         } else{
             header('location:../login');
