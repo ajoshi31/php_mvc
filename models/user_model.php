@@ -1,27 +1,27 @@
 <?php
 
-class User_Model extends  Model{
+class User_Model extends Model
+{
 
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
     }
 
-    public function userList(){
-        $statementHandler = $this->db->prepare("SELECT id,login, role FROM user");
-        $statementHandler->execute();
-        return $statementHandler->fetchAll();
+    public function userList()
+    {
+        return $this->db->select("SELECT id,login, role FROM user");
     }
 
-    public function userSingleList($id){
+    public function userSingleList($id)
+    {
 
-        $statementHandler = $this->db->prepare("SELECT id,login, role FROM user WHERE id = :id");
-        $statementHandler->execute(array(
-            ':id' => $id
-        ));
-        return $statementHandler->fetch();
+        return $this->db->select("SELECT id, login, role FROM user WHERE id = :id", array(':id' => $id));
+
     }
 
-    public function create($data){
+    public function create($data)
+    {
         $this->db->insert('user', array(
             'login' => $data['login'],
             'password' => Hash::create('sha256', $data['password'], HASH_PASSWORD_KEY),
@@ -29,7 +29,8 @@ class User_Model extends  Model{
         ));
     }
 
-    public function editSave($data){
+    public function editSave($data)
+    {
         $postData = array(
             'login' => $data['login'],
             'password' => Hash::create('sha256', $data['password'], HASH_PASSWORD_KEY),
@@ -38,15 +39,13 @@ class User_Model extends  Model{
         $this->db->update('user', $postData, "`id` = {$data['id']}");
     }
 
-    public function delete($id){
-        $statementHandler = $this->db->prepare('SELECT role FROM user WHERE id = :id');
-        $statementHandler->execute(array(':id' => $id));
-        $data = $statementHandler->fetch();
-        if($data['role'] == 'owner'){
+    public function delete($id)
+    {
+        $data =  $this->db->select('SELECT role FROM user WHERE id = :id', array(':id' => $id));
+        if ($data[0]['role'] == 'owner')
             return false;
-        }
-        $statementHandler = $this->db->prepare('DELETE FROM user WHERE id = :id');
-        $statementHandler->execute(array(':id' => $id));
+        $this->db->delete('user', "id = '$id'");
+
     }
 }
 
